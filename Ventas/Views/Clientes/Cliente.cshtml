@@ -1,0 +1,40 @@
+﻿@model Ventas.ViewModels.ClienteViewModel
+@{
+                /**/
+
+                ViewBag.Title = "Cliente";
+}
+
+<h2>Cliente</h2>
+
+@using (Html.BeginForm("Guardar", "Clientes"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Apellido)
+        @Html.TextBoxFor(m => m.Apellido, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Apellido)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nombre)
+        @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nombre)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DNI)
+        @Html.TextBoxFor(m => m.DNI, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DNI)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FecNac)
+        @Html.TextBoxFor(m => m.FecNac, new { @class = "form-control", @type = "date" })
+        @Html.ValidationMessageFor(m => m.FecNac)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Tarjeta)
+        @Html.TextBoxFor(m => m.Tarjeta, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Tarjeta)
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Guardar</button>
+}

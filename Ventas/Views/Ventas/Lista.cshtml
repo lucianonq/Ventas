@@ -1,0 +1,35 @@
+﻿@model Ventas.ViewModels.VentasListadoViewModel
+@{
+    ViewBag.Title = "Ventas";
+}
+
+<h2>Ventas</h2>
+<p>
+    @Html.ActionLink("Nuevo Venta", "Nuevo", "Ventas", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Factura</th>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Ventas)
+        {
+            var total = Model.Productos.Where(x => x.VentaId == item.Id).Sum(y => y.Productos.Precio * y.Cantidad);
+            <tr>
+                <td>@item.Id</td>
+                <td>@(item.Clientes.Apellido + ", " + item.Clientes.Nombre)</td>
+                <td>@item.Fecha.Value.ToShortDateString()</td>
+                <td>$@total</td>
+                <td>@Html.ActionLink("Borrar", "Borrar", new { id = item.Id })</td>
+                <td>@Html.ActionLink("Imprimir", "Imprimir", new { id = item.Id }, new { @target = "_blank" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

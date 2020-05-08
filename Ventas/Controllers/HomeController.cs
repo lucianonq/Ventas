@@ -26,5 +26,10 @@ namespace Ventas.Controllers
 
             return View();
         }
+
+        public ActionResult IngresarVenta()
+        {
+            return RedirectToAction("IngresarVenta", "Ventas");
+        }
     }
 }

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Ventas.Models.Productos>
+@{
+    ViewBag.Title = "Productos";
+}
+
+<h2>Productos</h2>
+<p>
+    @Html.ActionLink("Nuevo Producto", "Nuevo", "Productos", null, new { @class = "btn btn-primary" })
+</p>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Error
+    </div>
+}
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>Fecha de Vencimiento</th>
+            <th>Proveedor</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Marca</td>
+                <td>@item.Precio</td>
+                <td>@item.FecVenc</td>
+                <td>@item.Proveedor</td>
+                <td>@Html.ActionLink("Cambiar", "Actualizar", new { id = item.Id })</td>
+                <td>@Html.ActionLink("Borrar", "Borrar", new { id = item.Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>

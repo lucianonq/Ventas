@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Ventas.Models.Clientes>
+@{
+    ViewBag.Title = "Clientes";
+}
+
+<h2>Clientes</h2>
+<p>
+    @Html.ActionLink("Nuevo Cliente", "Nuevo", "Clientes", null, new { @class = "btn btn-primary" })
+</p>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Error
+    </div>
+}
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>Edad</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var cumple = new DateTime(DateTime.Today.Year, item.FecNac.Month, item.FecNac.Day);
+            var edad = cumple < DateTime.Today ? DateTime.Today.Year - item.FecNac.Year : DateTime.Today.Year - item.FecNac.Year - 1;
+            <tr>
+                <td>@(item.Apellido + ", " + item.Nombre)</td>
+                <td>@item.DNI</td>
+                <td>@edad</td>
+                <td>@Html.ActionLink("Cambiar", "Actualizar", new { id = item.Id })</td>
+                <td>@Html.ActionLink("Borrar", "Borrar", new { id = item.Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>

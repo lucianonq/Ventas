@@ -1,0 +1,23 @@
+﻿@model Ventas.ViewModels.VentaViewModel
+@{
+    ViewBag.Title = "Venta";
+}
+
+<h2>Venta</h2>
+
+@using (Html.BeginForm("GuardarVenta", "Ventas"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ClienteId)
+        @Html.DropDownListFor(x => x.ClienteId, (IEnumerable<SelectListItem>)ViewBag.ClienteId, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ClienteId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmpleadoId)
+        @Html.DropDownListFor(x => x.EmpleadoId, (IEnumerable<SelectListItem>)ViewBag.EmpleadoID, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.EmpleadoId)
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Seleccionar Productos</button>
+}

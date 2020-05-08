@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6092387d2c174c0384c4313c696aa530" Name="Diagram1">
+        <EntityTypeShape EntityType="VentasDbModel.Clientes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasDbModel.Empleados" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasDbModel.Productos" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasDbModel.Ventas" Width="1.5" PointX="2.75" PointY="3.5" />
+        <EntityTypeShape EntityType="VentasDbModel.Ventas_renglon" Width="1.5" PointX="4.75" PointY="3.5" />
+        <AssociationConnector Association="VentasDbModel.FK__Ventas__ClienteI__60A75C0F" />
+        <AssociationConnector Association="VentasDbModel.FK__Ventas__Empleado__619B8048" />
+        <AssociationConnector Association="VentasDbModel.FK__Ventas_re__Produ__656C112C" />
+        <AssociationConnector Association="VentasDbModel.FK__Ventas_re__Venta__6477ECF3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

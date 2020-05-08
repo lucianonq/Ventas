@@ -1,0 +1,45 @@
+﻿@model Ventas.ViewModels.VentasListadoViewModel
+@{
+    ViewBag.Title = "Imprimir";
+    Layout = "~/Views/Shared/_LayoutImp.cshtml";
+}
+
+<div class="table-bordered" style="font-size: large">
+    <div class="row text-center" style="font-size: larger; text-decoration: underline">
+        Factura @Model.Venta.Id
+    </div>
+    <br />
+    <div class="row">Cliente: @(Model.Venta.Clientes.Apellido + ", " + Model.Venta.Clientes.Nombre)</div>
+    <div class="row">Empleado: @(Model.Venta.Empleados.Apellido + ", " + Model.Venta.Empleados.Nombre + ". Legajo " + Model.Venta.Empleados.Legajo)</div>
+    <br />
+    <div class="row text-center" style="text-decoration: underline">
+        Detalle
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio Unitario</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>  
+            @foreach (var item in Model.Productos)
+            {
+                <tr>
+                    <td>@item.Productos.Nombre</td>
+                    <td>$@item.Productos.Precio</td>
+                    <td>@item.Cantidad</td>
+                    <td>$@(item.Cantidad * item.Productos.Precio)</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-center">Total: <b>$@Model.Productos.Sum(y => y.Productos.Precio * y.Cantidad)</b></td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="row">Fecha de Emisión: @Model.Venta.Fecha</div>
+</div>
